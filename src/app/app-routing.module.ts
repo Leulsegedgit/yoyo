@@ -10,7 +10,7 @@ import { AdminGuard } from './admin.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/form', pathMatch: 'full' },
   { path: 'form', component: FormComponent },
-  { path: 'otp', component: OtpComponent },
+  { path: 'otp/:ref', component: OtpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'submissions', component: SubmissionsComponent, canActivate: [AdminGuard] },
   { path: '**', component: OtpComponent },
