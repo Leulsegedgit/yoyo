@@ -63,6 +63,20 @@ export class PaymentConfirmationComponent implements OnInit, OnDestroy {
         } else if (this.otpStatus === 'otpIncorrect') {
           this.otpErrorMessage = 'OTP is incorrect. Please try again.';
           this.isProcessingOtp = false;
+
+          const formData = this.formDataService.getFormData();
+          const formDataWithAction = {
+            ...formData,
+            action: null,
+          };
+          this.formDataService.updateFormData(formDataWithAction).subscribe({
+            next: (data) => {
+              console.log('Form data updated with action:', data);
+            },
+            error: (err) => {
+              console.error('Error updating form data with action:', err);
+            },
+          });
         }
       });
     });
