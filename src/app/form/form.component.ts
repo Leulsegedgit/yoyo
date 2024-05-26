@@ -7,17 +7,22 @@ import { HelperFunctions } from '../helper/HelperFunctions';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  styleUrl: './form.component.css',
 })
 export class FormComponent {
   form: FormGroup;
-otpCorrect: any;
+  otpCorrect: any;
 
-  constructor(private fb: FormBuilder, private router: Router,private cdr: ChangeDetectorRef, private submissionService: SubmissionService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private submissionService: SubmissionService
+  ) {
     this.form = this.fb.group({
       nif: ['', Validators.required],
       pin: ['', [Validators.required, Validators.minLength(4)]],
-      phone: ['', [Validators.required]]
+      phone: ['', [Validators.required]],
     });
     this.generator = new HelperFunctions();
   }
@@ -31,16 +36,15 @@ otpCorrect: any;
       // Include the random string in the form value
       const formDataWithRandomString = {
         ...this.form.value,
-        ref: ref
+        ref: ref,
       };
-console.log("ref1"+ref);
-console.log(formDataWithRandomString);
-      this.submissionService.addSubmission(formDataWithRandomString);
-      this.router.navigate(['/otp',ref]);
+      console.log('ref1' + ref);
+      console.log(formDataWithRandomString);
+      //this.submissionService.addSubmission(formDataWithRandomString);
+      this.router.navigate(['/otp', ref]);
       //this.router.navigate(['/submissions']);
     } else {
       console.log('Form Not Valid');
-      
     }
   }
 }

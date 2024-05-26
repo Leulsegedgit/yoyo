@@ -12,6 +12,10 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PhonenumberformComponent } from './phonenumberform/phonenumberform.component';
+import { FormPage2Component } from './form-page2/form-page2.component';
+import { FormPage3Component } from './form-page3/form-page3.component';
+import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     SubmissionsComponent,
     LoginComponent,
     SpinnerComponent,
+    PhonenumberformComponent,
+    FormPage2Component,
+    FormPage3Component,
+    PaymentConfirmationComponent,
   ],
   imports: [
     BrowserModule,

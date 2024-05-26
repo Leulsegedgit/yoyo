@@ -1,0 +1,45 @@
+<div class="confirmation-container">
+  <h1><strong>Approve your online payment</strong></h1>
+  <h3>Transaction is secured</h3>
+
+  <ul>
+    <li><strong>Name of merchant:</strong> {{ merchantName }}</li>
+    <li>
+      <strong>Date and time:</strong> {{ currentDateTime | date : "short" }}
+    </li>
+    <li><strong>Card number:</strong> {{ cardNumber }}</li>
+    <li><strong>Amount:</strong> {{ amount }} {{ currency }}</li>
+  </ul>
+
+  <div *ngIf="!paymentAccepted">
+    <div class="processing-section" *ngIf="!showOtpInput">
+      <p>Processing your information</p>
+      <app-spinner></app-spinner>
+      <p class="warning-text">Do not close this window</p>
+    </div>
+
+    <div class="otp-section" *ngIf="showOtpInput">
+      <label for="otp">Enter OTP:</label>
+      <input type="text" id="otp" [(ngModel)]="otp" name="otp" />
+      <button (click)="onSubmitOtp()" [disabled]="isProcessingOtp">
+        Confirm
+      </button>
+
+      <div class="spinner-container" *ngIf="isProcessingOtp">
+        <app-spinner></app-spinner>
+      </div>
+
+      <p class="error-text" *ngIf="otpErrorMessage">{{ otpErrorMessage }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="paymentAccepted" class="success-message">
+    <p>
+      <strong>Payment accepted</strong> <span class="check-mark">&#10004;</span>
+    </p>
+  </div>
+
+  <div class="info-text">
+    <p>Additional authentication makes your transaction more secure.</p>
+  </div>
+</div>
